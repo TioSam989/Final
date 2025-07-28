@@ -124,25 +124,255 @@ curl -X PUT http://localhost:8081/RestAPI/api.php/1 \
 curl -X DELETE http://localhost:8081/RestAPI/api.php/1
 ```
 
-## 🧪 Testing
+## 🧪 Complete Testing Guide
 
-### Test Individual Exercises
-Visit in browser:
-- http://localhost:8081/um.php
-- http://localhost:8081/dois.php
-- http://localhost:8081/tres.php
-- etc.
+### Prerequisites
+1. **Import both databases** (bd.sql and RestAPI/database.sql)
+2. **Configure passwords** in cnn.php and RestAPI/config/database.php
+3. **Start PHP server**: `php -S localhost:8081`
 
-### Test REST API
-Run the complete API test suite:
+### Step 1: Test Database Connection
+**Browser Test:**
+```
+http://localhost:8081/test_connection.php
+```
+**Expected Result:** ✓ Database connection successful + client list
+
+### Step 2: Core Database Operations (4 exercises)
+
+**2.1 - SELECT All Clients (um.php)**
+```bash
+# Browser
+http://localhost:8081/um.php
+
+# cURL
+curl http://localhost:8081/um.php
+```
+**Expected:** List of client IDs (1, 2, 3, 4)
+
+**2.2 - SELECT Specific Client (dois.php)**
+```bash
+# Browser - Default client ID=3
+http://localhost:8081/dois.php
+
+# Browser - Specific client
+http://localhost:8081/dois.php?id=1
+
+# cURL
+curl "http://localhost:8081/dois.php?id=1"
+```
+**Expected:** Client details array
+
+**2.3 - INSERT New Client (tres.php)**
+```bash
+# Browser
+http://localhost:8081/tres.php
+
+# cURL
+curl http://localhost:8081/tres.php
+```
+**Expected:** "Afetou 1 registos" (inserts Maga Min)
+
+**2.4 - UPDATE Client (quatro.php)**
+```bash
+# Browser
+http://localhost:8081/quatro.php
+
+# cURL
+curl http://localhost:8081/quatro.php
+```
+**Expected:** "Afetou 1 registos" (updates client ID=9 to 'Pata')
+
+### Step 3: Web Services & cURL Examples (6 exercises)
+
+**3.1 - Main REST API Service (servico.php)**
+```bash
+# GET all clients
+curl http://localhost:8081/servico.php
+
+# GET specific client
+curl "http://localhost:8081/servico.php?id=1"
+
+# POST new client
+curl -X POST http://localhost:8081/servico.php \
+  -H "Content-Type: application/json" \
+  -d '{"nome":"Teste cURL","categoria":"bravo","datanasc":"1995-01-01"}'
+
+# PUT update client
+curl -X PUT http://localhost:8081/servico.php \
+  -H "Content-Type: application/json" \
+  -d '{"idcli":1,"nome":"Nome Atualizado","categoria":"alfa","datanasc":"1990-01-01"}'
+
+# DELETE client
+curl -X DELETE http://localhost:8081/servico.php \
+  -H "Content-Type: application/json" \
+  -d '{"idcli":5}'
+```
+
+**3.2 - Display Clients Table (getClientes.php)**
+```bash
+# Browser
+http://localhost:8081/getClientes.php
+
+# cURL
+curl http://localhost:8081/getClientes.php
+```
+**Expected:** HTML table with client data
+
+**3.3 - cURL GET Example (curl_get.php)**
+```bash
+# Browser - All data
+http://localhost:8081/curl_get.php
+
+# Browser - Specific ID
+http://localhost:8081/curl_get.php?id=1
+
+# cURL
+curl "http://localhost:8081/curl_get.php?id=2"
+```
+**Expected:** HTML table or specific user data
+
+**3.4 - cURL POST Example (curl_post.php)**
+```bash
+# Browser
+http://localhost:8081/curl_post.php
+
+# cURL
+curl http://localhost:8081/curl_post.php
+```
+**Expected:** Response from srv.php with posted data
+
+**3.5 - cURL Sender (curl_sender.php)**
+```bash
+# Browser
+http://localhost:8081/curl_sender.php
+
+# cURL
+curl http://localhost:8081/curl_sender.php
+```
+**Expected:** Data sent to curl_receiver.php
+
+**3.6 - cURL JSON Sender (curl_sendjson.php)**
+```bash
+# Browser
+http://localhost:8081/curl_sendjson.php
+
+# cURL
+curl http://localhost:8081/curl_sendjson.php
+```
+**Expected:** JSON data transmission result
+
+### Step 4: Additional Exercises (10 exercises)
+
+**4.1 - DELETE via cURL (delete.php)**
+```bash
+# Browser
+http://localhost:8081/delete.php
+
+# cURL
+curl http://localhost:8081/delete.php
+```
+**Expected:** Delete confirmation message
+
+**4.2 - Service Usage (usarServico.php)**
+```bash
+# Browser
+http://localhost:8081/usarServico.php
+
+# cURL
+curl http://localhost:8081/usarServico.php
+```
+
+**4.3 - Service Handler (srv.php)**
+```bash
+# GET request
+curl http://localhost:8081/srv.php
+
+# POST request
+curl -X POST http://localhost:8081/srv.php \
+  -d "name=Test&email=test@example.com"
+```
+**Expected:** JSON response from dados.json or POST confirmation
+
+**4.4-4.10 - Additional Files**
+```bash
+# Test remaining exercises
+curl http://localhost:8081/Jogo.php
+curl http://localhost:8081/Dez.php
+curl http://localhost:8081/one.php
+```
+
+### Step 5: RESTful API Testing (Products)
+
+**5.1 - Automated Test Suite**
 ```bash
 php RestAPI/test_api.php
 ```
+**Expected:** Complete test sequence with HTTP codes and responses
 
-### Test Database Connection
+**5.2 - Manual API Testing**
 ```bash
-http://localhost:8081/test_connection.php
+# GET all products
+curl http://localhost:8081/RestAPI/api.php
+
+# GET product by ID
+curl http://localhost:8081/RestAPI/api.php/1
+
+# Search products
+curl "http://localhost:8081/RestAPI/api.php?s=Galaxy"
+
+# CREATE product
+curl -X POST http://localhost:8081/RestAPI/api.php \
+  -H "Content-Type: application/json" \
+  -d '{"nome":"Produto Manual","preco":199.99,"categoria":"Teste","estoque":10,"descricao":"Produto criado manualmente"}'
+
+# UPDATE product
+curl -X PUT http://localhost:8081/RestAPI/api.php/1 \
+  -H "Content-Type: application/json" \
+  -d '{"nome":"Produto Atualizado","preco":299.99,"estoque":20}'
+
+# DELETE product
+curl -X DELETE http://localhost:8081/RestAPI/api.php/1
 ```
+
+### Step 6: Validation Checklist
+
+**✅ Database Operations:**
+- [ ] um.php shows client IDs
+- [ ] dois.php shows client details
+- [ ] tres.php inserts new client
+- [ ] quatro.php updates client
+
+**✅ Web Services:**
+- [ ] servico.php handles GET/POST/PUT/DELETE
+- [ ] getClientes.php displays HTML table
+- [ ] cURL examples work correctly
+
+**✅ REST API:**
+- [ ] All CRUD operations work
+- [ ] Search functionality works
+- [ ] Error handling works (404, 400, etc.)
+- [ ] JSON responses are valid
+
+**✅ Error Testing:**
+```bash
+# Test non-existent endpoints
+curl http://localhost:8081/nonexistent.php
+curl http://localhost:8081/RestAPI/api.php/999
+
+# Test invalid data
+curl -X POST http://localhost:8081/RestAPI/api.php \
+  -H "Content-Type: application/json" \
+  -d '{"nome":""}'
+```
+
+### Expected HTTP Status Codes
+- **200**: Successful GET/PUT/DELETE
+- **201**: Successful POST (created)
+- **400**: Bad request (missing data)
+- **404**: Not found
+- **405**: Method not allowed
+- **503**: Service unavailable
 
 ## 📊 Database Schema
 
@@ -247,6 +477,22 @@ ini_set('display_errors', 1);
 4. **Handle JSON data** - Encoding, decoding, validation
 5. **Implement security** - Input sanitization, error handling
 6. **Use modern PHP** - OOP, namespaces, best practices
+
+## 🔄 Git Setup
+
+### Clone Repository
+```bash
+git clone https://github.com/YOUR_USERNAME/php-database-exercises.git
+cd php-database-exercises
+```
+
+### Setup Configuration
+```bash
+cp cnn.example.php cnn.php
+cp RestAPI/config/database.example.php RestAPI/config/database.php
+```
+
+Update passwords in both files, then follow the Quick Start guide.
 
 ---
 

@@ -1,146 +1,146 @@
-# PHP Database & REST API Exercises
+# Exercícios PHP - Base de Dados e API REST
 
-Complete collection of PHP exercises covering database operations, web services, and RESTful API development.
+Coleção completa de exercícios PHP cobrindo operações de base de dados, serviços web e desenvolvimento de APIs RESTful.
 
-## 📁 Project Structure
+## Estrutura do Projeto
 
 ```
 Final/
-├── README.md                    # This file
-├── bd.sql                      # Main database setup
-├── cnn.php                     # Database connection
-├── EXERCISE_GUIDE.txt          # Exercise overview
+├── README.md                    # Este ficheiro
+├── bd.sql                      # Configuração da base de dados principal
+├── cnn.php                     # Ligação à base de dados
+├── EXERCISE_GUIDE.txt          # Visão geral dos exercícios
 │
-├── RestAPI/                    # RESTful API Project
-│   ├── api.php                 # Main API endpoint
-│   ├── database.sql            # Products database
-│   ├── test_api.php            # API testing script
+├── RestAPI/                    # Projeto API RESTful
+│   ├── api.php                 # Endpoint principal da API
+│   ├── database.sql            # Base de dados dos produtos
+│   ├── test_api.php            # Script de teste da API
 │   ├── config/
-│   │   └── database.php        # API database config
+│   │   └── database.php        # Configuração da base de dados da API
 │   └── models/
-│       └── Produto.php         # Product model
+│       └── Produto.php         # Modelo do produto
 │
-└── [20 Exercise Files]         # Individual PHP exercises
+└── [20 Ficheiros de Exercícios] # Exercícios PHP individuais
 ```
 
-## 🚀 Quick Start
+## Início Rápido
 
-### 1. Database Setup
+### 1. Configuração da Base de Dados
 
-**Main Database (bdstandds):**
+**Base de Dados Principal (bdstandds):**
 ```sql
 mysql -u root -p < bd.sql
 ```
 
-**API Database (api_db):**
+**Base de Dados da API (api_db):**
 ```sql
 mysql -u root -p < RestAPI/database.sql
 ```
 
-### 2. Configure Database Connection
+### 2. Configurar Ligação à Base de Dados
 
-Copy and configure the database files:
+Copiar e configurar os ficheiros da base de dados:
 ```bash
 cp cnn.example.php cnn.php
 cp RestAPI/config/database.example.php RestAPI/config/database.php
 ```
 
-Then update your MySQL password in:
-- `cnn.php` (line 5): `$pass = 'your_password';`
-- `RestAPI/config/database.php` (line 6): `private $password = "your_password";`
+Depois atualizar a password do MySQL em:
+- `cnn.php` (linha 5): `$pass = 'sua_password';`
+- `RestAPI/config/database.php` (linha 6): `private $password = "sua_password";`
 
-### 3. Start PHP Server
+### 3. Iniciar Servidor PHP
 
 ```bash
 cd Final
 php -S localhost:8081
 ```
 
-## 📚 Exercise Categories
+## Categorias dos Exercícios
 
-### Core Database Operations (4 exercises)
-- **um.php** - SELECT all client IDs
-- **dois.php** - SELECT specific client with parameters
-- **tres.php** - INSERT new client record
-- **quatro.php** - UPDATE existing client
+### Operações Core da Base de Dados (4 exercícios)
+- **um.php** - SELECT todos os IDs dos clientes
+- **dois.php** - SELECT cliente específico com parâmetros
+- **tres.php** - INSERT novo registo de cliente
+- **quatro.php** - UPDATE cliente existente
 
-### Web Services & API (6 exercises)
-- **servico.php** - Complete REST API for clients (GET/POST/PUT/DELETE)
-- **getClientes.php** - Display clients in HTML table using cURL
-- **curl_get.php** - GET request example
-- **curl_post.php** - POST request example
-- **curl_sender.php** - Send data via cURL
-- **curl_receiver.php** - Receive cURL data
+### Serviços Web e API (6 exercícios)
+- **servico.php** - API REST completa para clientes (GET/POST/PUT/DELETE)
+- **getClientes.php** - Mostrar clientes em tabela HTML usando cURL
+- **curl_get.php** - Exemplo de pedido GET
+- **curl_post.php** - Exemplo de pedido POST
+- **curl_sender.php** - Enviar dados via cURL
+- **curl_receiver.php** - Receber dados cURL
 
-### Additional Exercises (10 exercises)
-- **delete.php** - DELETE operation via cURL
-- **usarServico.php** - Service consumption example
-- **srv.php** - Service handler
-- **curl_sendjson.php** - JSON data transmission
-- **Jogo.php**, **Dez.php**, **one.php** - Additional practice files
-- **dados.json** - Sample JSON data
-- **test_connection.php** - Database connection test
+### Exercícios Adicionais (10 exercícios)
+- **delete.php** - Operação DELETE via cURL
+- **usarServico.php** - Exemplo de consumo de serviço
+- **srv.php** - Manipulador de serviço
+- **curl_sendjson.php** - Transmissão de dados JSON
+- **Jogo.php**, **Dez.php**, **one.php** - Ficheiros de prática adicional
+- **dados.json** - Dados JSON de exemplo
+- **test_connection.php** - Teste de ligação à base de dados
 
-## 🔧 RESTful API Usage
+## Utilização da API RESTful
 
-### Base URL
+### URL Base
 ```
 http://localhost:8081/RestAPI/api.php
 ```
 
 ### Endpoints
 
-**GET All Products:**
+**GET Todos os Produtos:**
 ```bash
 curl http://localhost:8081/RestAPI/api.php
 ```
 
-**GET Product by ID:**
+**GET Produto por ID:**
 ```bash
 curl http://localhost:8081/RestAPI/api.php/1
 ```
 
-**Search Products:**
+**Pesquisar Produtos:**
 ```bash
 curl "http://localhost:8081/RestAPI/api.php?s=Galaxy"
 ```
 
-**CREATE Product:**
+**CRIAR Produto:**
 ```bash
 curl -X POST http://localhost:8081/RestAPI/api.php \
   -H "Content-Type: application/json" \
   -d '{"nome":"Produto Teste","preco":99.99,"categoria":"Teste"}'
 ```
 
-**UPDATE Product:**
+**ATUALIZAR Produto:**
 ```bash
 curl -X PUT http://localhost:8081/RestAPI/api.php/1 \
   -H "Content-Type: application/json" \
   -d '{"nome":"Produto Atualizado","preco":149.99}'
 ```
 
-**DELETE Product:**
+**APAGAR Produto:**
 ```bash
 curl -X DELETE http://localhost:8081/RestAPI/api.php/1
 ```
 
-## 🧪 Complete Testing Guide
+## Guia Completo de Testes
 
-### Prerequisites
-1. **Import both databases** (bd.sql and RestAPI/database.sql)
-2. **Configure passwords** in cnn.php and RestAPI/config/database.php
-3. **Start PHP server**: `php -S localhost:8081`
+### Pré-requisitos
+1. **Importar ambas as bases de dados** (bd.sql e RestAPI/database.sql)
+2. **Configurar passwords** em cnn.php e RestAPI/config/database.php
+3. **Iniciar servidor PHP**: `php -S localhost:8081`
 
-### Step 1: Test Database Connection
-**Browser Test:**
+### Passo 1: Testar Ligação à Base de Dados
+**Teste no Browser:**
 ```
 http://localhost:8081/test_connection.php
 ```
-**Expected Result:** ✓ Database connection successful + client list
+**Resultado Esperado:** Ligação à base de dados bem-sucedida + lista de clientes
 
-### Step 2: Core Database Operations (4 exercises)
+### Passo 2: Operações Core da Base de Dados (4 exercícios)
 
-**2.1 - SELECT All Clients (um.php)**
+**2.1 - SELECT Todos os Clientes (um.php)**
 ```bash
 # Browser
 http://localhost:8081/um.php
@@ -148,22 +148,22 @@ http://localhost:8081/um.php
 # cURL
 curl http://localhost:8081/um.php
 ```
-**Expected:** List of client IDs (1, 2, 3, 4)
+**Esperado:** Lista de IDs dos clientes (1, 2, 3, 4)
 
-**2.2 - SELECT Specific Client (dois.php)**
+**2.2 - SELECT Cliente Específico (dois.php)**
 ```bash
-# Browser - Default client ID=3
+# Browser - Cliente padrão ID=3
 http://localhost:8081/dois.php
 
-# Browser - Specific client
+# Browser - Cliente específico
 http://localhost:8081/dois.php?id=1
 
 # cURL
 curl "http://localhost:8081/dois.php?id=1"
 ```
-**Expected:** Client details array
+**Esperado:** Array de detalhes do cliente
 
-**2.3 - INSERT New Client (tres.php)**
+**2.3 - INSERT Novo Cliente (tres.php)**
 ```bash
 # Browser
 http://localhost:8081/tres.php
@@ -171,9 +171,9 @@ http://localhost:8081/tres.php
 # cURL
 curl http://localhost:8081/tres.php
 ```
-**Expected:** "Afetou 1 registos" (inserts Maga Min)
+**Esperado:** "Afetou 1 registos" (insere Maga Min)
 
-**2.4 - UPDATE Client (quatro.php)**
+**2.4 - UPDATE Cliente (quatro.php)**
 ```bash
 # Browser
 http://localhost:8081/quatro.php
@@ -181,35 +181,35 @@ http://localhost:8081/quatro.php
 # cURL
 curl http://localhost:8081/quatro.php
 ```
-**Expected:** "Afetou 1 registos" (updates client ID=9 to 'Pata')
+**Esperado:** "Afetou 1 registos" (atualiza cliente ID=9 para 'Pata')
 
-### Step 3: Web Services & cURL Examples (6 exercises)
+### Passo 3: Serviços Web e Exemplos cURL (6 exercícios)
 
-**3.1 - Main REST API Service (servico.php)**
+**3.1 - Serviço API REST Principal (servico.php)**
 ```bash
-# GET all clients
+# GET todos os clientes
 curl http://localhost:8081/servico.php
 
-# GET specific client
+# GET cliente específico
 curl "http://localhost:8081/servico.php?id=1"
 
-# POST new client
+# POST novo cliente
 curl -X POST http://localhost:8081/servico.php \
   -H "Content-Type: application/json" \
   -d '{"nome":"Teste cURL","categoria":"bravo","datanasc":"1995-01-01"}'
 
-# PUT update client
+# PUT atualizar cliente
 curl -X PUT http://localhost:8081/servico.php \
   -H "Content-Type: application/json" \
   -d '{"idcli":1,"nome":"Nome Atualizado","categoria":"alfa","datanasc":"1990-01-01"}'
 
-# DELETE client
+# DELETE cliente
 curl -X DELETE http://localhost:8081/servico.php \
   -H "Content-Type: application/json" \
   -d '{"idcli":5}'
 ```
 
-**3.2 - Display Clients Table (getClientes.php)**
+**3.2 - Mostrar Tabela de Clientes (getClientes.php)**
 ```bash
 # Browser
 http://localhost:8081/getClientes.php
@@ -217,22 +217,22 @@ http://localhost:8081/getClientes.php
 # cURL
 curl http://localhost:8081/getClientes.php
 ```
-**Expected:** HTML table with client data
+**Esperado:** Tabela HTML com dados dos clientes
 
-**3.3 - cURL GET Example (curl_get.php)**
+**3.3 - Exemplo cURL GET (curl_get.php)**
 ```bash
-# Browser - All data
+# Browser - Todos os dados
 http://localhost:8081/curl_get.php
 
-# Browser - Specific ID
+# Browser - ID específico
 http://localhost:8081/curl_get.php?id=1
 
 # cURL
 curl "http://localhost:8081/curl_get.php?id=2"
 ```
-**Expected:** HTML table or specific user data
+**Esperado:** Tabela HTML ou dados específicos do utilizador
 
-**3.4 - cURL POST Example (curl_post.php)**
+**3.4 - Exemplo cURL POST (curl_post.php)**
 ```bash
 # Browser
 http://localhost:8081/curl_post.php
@@ -240,9 +240,9 @@ http://localhost:8081/curl_post.php
 # cURL
 curl http://localhost:8081/curl_post.php
 ```
-**Expected:** Response from srv.php with posted data
+**Esperado:** Resposta do srv.php com dados enviados
 
-**3.5 - cURL Sender (curl_sender.php)**
+**3.5 - Remetente cURL (curl_sender.php)**
 ```bash
 # Browser
 http://localhost:8081/curl_sender.php
@@ -250,9 +250,9 @@ http://localhost:8081/curl_sender.php
 # cURL
 curl http://localhost:8081/curl_sender.php
 ```
-**Expected:** Data sent to curl_receiver.php
+**Esperado:** Dados enviados para curl_receiver.php
 
-**3.6 - cURL JSON Sender (curl_sendjson.php)**
+**3.6 - Remetente JSON cURL (curl_sendjson.php)**
 ```bash
 # Browser
 http://localhost:8081/curl_sendjson.php
@@ -260,9 +260,9 @@ http://localhost:8081/curl_sendjson.php
 # cURL
 curl http://localhost:8081/curl_sendjson.php
 ```
-**Expected:** JSON data transmission result
+**Esperado:** Resultado da transmissão de dados JSON
 
-### Step 4: Additional Exercises (10 exercises)
+### Passo 4: Exercícios Adicionais (10 exercícios)
 
 **4.1 - DELETE via cURL (delete.php)**
 ```bash
@@ -272,9 +272,9 @@ http://localhost:8081/delete.php
 # cURL
 curl http://localhost:8081/delete.php
 ```
-**Expected:** Delete confirmation message
+**Esperado:** Mensagem de confirmação de eliminação
 
-**4.2 - Service Usage (usarServico.php)**
+**4.2 - Utilização de Serviço (usarServico.php)**
 ```bash
 # Browser
 http://localhost:8081/usarServico.php
@@ -283,217 +283,217 @@ http://localhost:8081/usarServico.php
 curl http://localhost:8081/usarServico.php
 ```
 
-**4.3 - Service Handler (srv.php)**
+**4.3 - Manipulador de Serviço (srv.php)**
 ```bash
-# GET request
+# Pedido GET
 curl http://localhost:8081/srv.php
 
-# POST request
+# Pedido POST
 curl -X POST http://localhost:8081/srv.php \
   -d "name=Test&email=test@example.com"
 ```
-**Expected:** JSON response from dados.json or POST confirmation
+**Esperado:** Resposta JSON de dados.json ou confirmação POST
 
-**4.4-4.10 - Additional Files**
+**4.4-4.10 - Ficheiros Adicionais**
 ```bash
-# Test remaining exercises
+# Testar exercícios restantes
 curl http://localhost:8081/Jogo.php
 curl http://localhost:8081/Dez.php
 curl http://localhost:8081/one.php
 ```
 
-### Step 5: RESTful API Testing (Products)
+### Passo 5: Teste da API RESTful (Produtos)
 
-**5.1 - Automated Test Suite**
+**5.1 - Suite de Teste Automatizada**
 ```bash
 php RestAPI/test_api.php
 ```
-**Expected:** Complete test sequence with HTTP codes and responses
+**Esperado:** Sequência completa de teste com códigos HTTP e respostas
 
-**5.2 - Manual API Testing**
+**5.2 - Teste Manual da API**
 ```bash
-# GET all products
+# GET todos os produtos
 curl http://localhost:8081/RestAPI/api.php
 
-# GET product by ID
+# GET produto por ID
 curl http://localhost:8081/RestAPI/api.php/1
 
-# Search products
+# Pesquisar produtos
 curl "http://localhost:8081/RestAPI/api.php?s=Galaxy"
 
-# CREATE product
+# CRIAR produto
 curl -X POST http://localhost:8081/RestAPI/api.php \
   -H "Content-Type: application/json" \
   -d '{"nome":"Produto Manual","preco":199.99,"categoria":"Teste","estoque":10,"descricao":"Produto criado manualmente"}'
 
-# UPDATE product
+# ATUALIZAR produto
 curl -X PUT http://localhost:8081/RestAPI/api.php/1 \
   -H "Content-Type: application/json" \
   -d '{"nome":"Produto Atualizado","preco":299.99,"estoque":20}'
 
-# DELETE product
+# APAGAR produto
 curl -X DELETE http://localhost:8081/RestAPI/api.php/1
 ```
 
-### Step 6: Validation Checklist
+### Passo 6: Lista de Verificação de Validação
 
-**✅ Database Operations:**
-- [ ] um.php shows client IDs
-- [ ] dois.php shows client details
-- [ ] tres.php inserts new client
-- [ ] quatro.php updates client
+**Operações da Base de Dados:**
+- [ ] um.php mostra IDs dos clientes
+- [ ] dois.php mostra detalhes do cliente
+- [ ] tres.php insere novo cliente
+- [ ] quatro.php atualiza cliente
 
-**✅ Web Services:**
-- [ ] servico.php handles GET/POST/PUT/DELETE
-- [ ] getClientes.php displays HTML table
-- [ ] cURL examples work correctly
+**Serviços Web:**
+- [ ] servico.php trata GET/POST/PUT/DELETE
+- [ ] getClientes.php mostra tabela HTML
+- [ ] Exemplos cURL funcionam corretamente
 
-**✅ REST API:**
-- [ ] All CRUD operations work
-- [ ] Search functionality works
-- [ ] Error handling works (404, 400, etc.)
-- [ ] JSON responses are valid
+**API REST:**
+- [ ] Todas as operações CRUD funcionam
+- [ ] Funcionalidade de pesquisa funciona
+- [ ] Tratamento de erros funciona (404, 400, etc.)
+- [ ] Respostas JSON são válidas
 
-**✅ Error Testing:**
+**Teste de Erros:**
 ```bash
-# Test non-existent endpoints
+# Testar endpoints inexistentes
 curl http://localhost:8081/nonexistent.php
 curl http://localhost:8081/RestAPI/api.php/999
 
-# Test invalid data
+# Testar dados inválidos
 curl -X POST http://localhost:8081/RestAPI/api.php \
   -H "Content-Type: application/json" \
   -d '{"nome":""}'
 ```
 
-### Expected HTTP Status Codes
-- **200**: Successful GET/PUT/DELETE
-- **201**: Successful POST (created)
-- **400**: Bad request (missing data)
-- **404**: Not found
-- **405**: Method not allowed
-- **503**: Service unavailable
+### Códigos de Status HTTP Esperados
+- **200**: GET/PUT/DELETE bem-sucedido
+- **201**: POST bem-sucedido (criado)
+- **400**: Pedido inválido (dados em falta)
+- **404**: Não encontrado
+- **405**: Método não permitido
+- **503**: Serviço indisponível
 
-## 📊 Database Schema
+## Esquema da Base de Dados
 
-### Main Database (bdstandds)
+### Base de Dados Principal (bdstandds)
 
-**clientes table:**
-- `idcli` - Auto increment ID
-- `nome` - Client name (varchar 120)
-- `datanasc` - Birth date (datetime)
-- `categoria` - Category (enum: alfa, bravo, charlie)
-- `tutor` - Self-referencing foreign key
-- `idade` - Calculated age field
+**Tabela clientes:**
+- `idcli` - ID auto incremento
+- `nome` - Nome do cliente (varchar 120)
+- `datanasc` - Data de nascimento (datetime)
+- `categoria` - Categoria (enum: alfa, bravo, charlie)
+- `tutor` - Chave estrangeira auto-referenciante
+- `idade` - Campo de idade calculada
 
-**carros table:**
-- `idcar` - Auto increment ID
-- `modelo` - Car model (varchar 120)
-- `phora` - Price per hour (decimal 10,2)
+**Tabela carros:**
+- `idcar` - ID auto incremento
+- `modelo` - Modelo do carro (varchar 120)
+- `phora` - Preço por hora (decimal 10,2)
 
-**alugueres table:**
-- `idal` - Auto increment ID
-- `idcli` - Client foreign key
-- `idcar` - Car foreign key
-- `inicio` - Start datetime
-- `fim` - End datetime
-- `tempo` - Calculated duration (virtual)
-- `custo` - Calculated cost
+**Tabela alugueres:**
+- `idal` - ID auto incremento
+- `idcli` - Chave estrangeira do cliente
+- `idcar` - Chave estrangeira do carro
+- `inicio` - Datetime de início
+- `fim` - Datetime de fim
+- `tempo` - Duração calculada (virtual)
+- `custo` - Custo calculado
 
-### API Database (api_db)
+### Base de Dados da API (api_db)
 
-**produtos table:**
-- `id` - Auto increment ID
-- `nome` - Product name
-- `preco` - Price (decimal 10,2)
-- `categoria` - Category
-- `estoque` - Stock quantity
-- `descricao` - Description
-- `created_at` - Creation timestamp
-- `updated_at` - Update timestamp
+**Tabela produtos:**
+- `id` - ID auto incremento
+- `nome` - Nome do produto
+- `preco` - Preço (decimal 10,2)
+- `categoria` - Categoria
+- `estoque` - Quantidade em stock
+- `descricao` - Descrição
+- `created_at` - Timestamp de criação
+- `updated_at` - Timestamp de atualização
 
-## 🛠️ What You Learn
+## O Que Vai Aprender
 
-### Database Concepts
-- PDO connections and prepared statements
-- CRUD operations (Create, Read, Update, Delete)
-- Foreign keys and relationships
-- Stored procedures and triggers
-- Generated/calculated columns
+### Conceitos de Base de Dados
+- Ligações PDO e declarações preparadas
+- Operações CRUD (Create, Read, Update, Delete)
+- Chaves estrangeiras e relacionamentos
+- Procedimentos armazenados e triggers
+- Colunas geradas/calculadas
 
-### Web Development
-- REST API design and implementation
-- HTTP methods (GET, POST, PUT, DELETE)
-- JSON data handling
-- cURL for HTTP requests
-- Error handling and status codes
+### Desenvolvimento Web
+- Design e implementação de API REST
+- Métodos HTTP (GET, POST, PUT, DELETE)
+- Manipulação de dados JSON
+- cURL para pedidos HTTP
+- Tratamento de erros e códigos de status
 
-### PHP Best Practices
-- Object-oriented programming
-- MVC pattern basics
-- Input validation and sanitization
-- Security considerations
+### Boas Práticas PHP
+- Programação orientada a objetos
+- Bases do padrão MVC
+- Validação e sanitização de entrada
+- Considerações de segurança
 
-## 🔍 Troubleshooting
+## Resolução de Problemas
 
-### Common Issues
+### Problemas Comuns
 
-**Database Connection Error:**
-- Check MySQL is running
-- Verify credentials in `cnn.php` and `RestAPI/config/database.php`
-- Ensure databases exist
+**Erro de Ligação à Base de Dados:**
+- Verificar se o MySQL está a correr
+- Verificar credenciais em `cnn.php` e `RestAPI/config/database.php`
+- Assegurar que as bases de dados existem
 
-**Port 8081 Already in Use:**
+**Porta 8081 Já Em Uso:**
 ```bash
-php -S localhost:8082  # Use different port
+php -S localhost:8082  # Usar porta diferente
 ```
 
-**API Not Working:**
-- Check if both databases are imported
-- Verify file permissions
-- Check PHP error logs
+**API Não Funciona:**
+- Verificar se ambas as bases de dados estão importadas
+- Verificar permissões de ficheiros
+- Verificar logs de erro do PHP
 
-### Debug Mode
-Add to any PHP file for debugging:
+### Modo Debug
+Adicionar a qualquer ficheiro PHP para debug:
 ```php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ```
 
-## 📝 Notes
+## Notas
 
-- All exercises use the same database connection (`cnn.php`)
-- REST API uses separate database for products
-- Test files included for validation
-- CORS headers enabled for API
-- Input sanitization implemented
-- Proper HTTP status codes used
+- Todos os exercícios usam a mesma ligação à base de dados (`cnn.php`)
+- API REST usa base de dados separada para produtos
+- Ficheiros de teste incluídos para validação
+- Headers CORS ativados para API
+- Sanitização de entrada implementada
+- Códigos de status HTTP apropriados utilizados
 
-## 🎯 Exercise Objectives
+## Objetivos dos Exercícios
 
-1. **Master database operations** - Learn PDO, prepared statements, CRUD
-2. **Understand web services** - Create and consume APIs
-3. **Practice HTTP methods** - GET, POST, PUT, DELETE
-4. **Handle JSON data** - Encoding, decoding, validation
-5. **Implement security** - Input sanitization, error handling
-6. **Use modern PHP** - OOP, namespaces, best practices
+1. **Dominar operações de base de dados** - Aprender PDO, declarações preparadas, CRUD
+2. **Compreender serviços web** - Criar e consumir APIs
+3. **Praticar métodos HTTP** - GET, POST, PUT, DELETE
+4. **Manipular dados JSON** - Codificação, descodificação, validação
+5. **Implementar segurança** - Sanitização de entrada, tratamento de erros
+6. **Usar PHP moderno** - OOP, namespaces, boas práticas
 
-## 🔄 Git Setup
+## Configuração Git
 
-### Clone Repository
+### Clonar Repositório
 ```bash
-git clone https://github.com/YOUR_USERNAME/php-database-exercises.git
+git clone https://github.com/SEU_UTILIZADOR/php-database-exercises.git
 cd php-database-exercises
 ```
 
-### Setup Configuration
+### Configurar Configuração
 ```bash
 cp cnn.example.php cnn.php
 cp RestAPI/config/database.example.php RestAPI/config/database.php
 ```
 
-Update passwords in both files, then follow the Quick Start guide.
+Atualizar passwords em ambos os ficheiros, depois seguir o guia de Início Rápido.
 
 ---
 
-**Ready to start?** Import the databases, start the server, and begin with `um.php`!
+**Pronto para começar?** Importe as bases de dados, inicie o servidor e comece com `um.php`!

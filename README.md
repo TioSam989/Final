@@ -39,7 +39,13 @@ mysql -u root -p < RestAPI/database.sql
 
 ### 2. Configure Database Connection
 
-Update your MySQL password in:
+Copy and configure the database files:
+```bash
+cp cnn.example.php cnn.php
+cp RestAPI/config/database.example.php RestAPI/config/database.php
+```
+
+Then update your MySQL password in:
 - `cnn.php` (line 5): `$pass = 'your_password';`
 - `RestAPI/config/database.php` (line 6): `private $password = "your_password";`
 

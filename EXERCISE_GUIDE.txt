@@ -1,0 +1,34 @@
+PHP DATABASE EXERCISES GUIDE
+============================
+
+SETUP:
+1. Run setup_database.sql in your MySQL
+2. Start PHP server: php -S localhost:8081
+3. Update MySQL password in cnn.php if needed
+
+EXERCISES:
+
+Basic Database (Direct):
+- um.php: SELECT all records
+- dois.php: SELECT with WHERE clause
+- tres.php: INSERT new record
+- quatro.php: UPDATE existing record
+
+Web Service (API):
+- servico.php: Complete REST API (GET/POST/PUT/DELETE)
+- getClientes.php: Consume API with cURL
+
+cURL Examples:
+- curl_get.php: GET request
+- curl_post.php: POST request  
+- delete.php: DELETE request
+
+Test URLs:
+http://localhost:8081/[filename].php
+
+What you learn:
+- Database connections with PDO
+- CRUD operations
+- REST API creation
+- HTTP requests with cURL
+- JSON handling

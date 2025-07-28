@@ -1,0 +1,15 @@
+# Database credentials (security)
+cnn.php
+RestAPI/config/database.php
+
+# Temporary files
+*.tmp
+*.log
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
